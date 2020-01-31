@@ -1,6 +1,7 @@
 const canvas = document.querySelector("#sketchpad");
 const context = canvas.getContext("2d");
 let painting = false; 
+const clear = document.querySelector(".clear");
 
 window.addEventListener("load", () => {
     responsive();
@@ -10,7 +11,12 @@ window.addEventListener("load", () => {
     canvas.addEventListener("touchstart", startPosition);
     canvas.addEventListener("touchend", finishedPosition);
     canvas.addEventListener("touchmove", draw);
+    clear.addEventListener("click", clearCanvas);
 });
+
+window.addEventListener("change", () => {
+    context.strokeStyle = document.querySelector(".color").value;
+})
 
 window.addEventListener("resize", () => {
     responsive();
@@ -28,7 +34,7 @@ const finishedPosition = () => {
 
 const draw = (event) => {
     if(!painting) return;
-    context.lineWidth = 10;
+    context.lineWidth = document.querySelector(".size").value;
     context.lineCap = "round";
 
     context.lineTo(event.clientX, event.clientY);
@@ -40,4 +46,8 @@ const draw = (event) => {
 const responsive = () => {
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
+}
+
+const clearCanvas = () => {
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
