@@ -1,7 +1,21 @@
 #sketchpad {
-    border: 1px solid black;
+    background: white;
+}
+
+body {
+    background: rgb(26, 26, 26);
 }
 
 .controls {
-    position: absolute;    
+    position: absolute;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid rgb(26, 26, 26);
+    border-bottom: 2px solid rgb(26, 26, 26);
+    border-radius: 0 0 5px 0;
+}
+
+.clear, .color, .size {
+    margin: 10px 0;
 }

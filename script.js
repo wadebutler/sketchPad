@@ -44,8 +44,8 @@ const draw = (event) => {
 }
 
 const responsive = () => {
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - 50;
+    canvas.width = window.innerWidth - 50;
 }
 
 const clearCanvas = () => {

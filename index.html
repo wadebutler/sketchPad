@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Sketch-it</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="controls">
-        <button class="clear">X</button>
-        <input class="color" type="color">
-        <input class="size" type="range" value="10">
+        <button class="clear">Clear Canvas</button>
+        <div>
+            <label for="color">Color:</label>
+            <input id="color" class="color" type="color">
+        </div>
+        <div>
+            <label for="size">Stroke Size:</label>
+            <input id="size" class="size" type="range" value="10">
+        </div>
     </div>
     <canvas id="sketchpad"></canvas>
 
