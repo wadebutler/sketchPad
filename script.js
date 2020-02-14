@@ -41,13 +41,19 @@ const draw = (event) => {
     context.stroke();
     context.beginPath();
     context.moveTo(event.clientX, event.clientY);
+
+    context.lineTo(event.touches[0].clientX, event.touches[0].clientY);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(event.touches[0].clientX, event.touches[0].clientY);
 }
 
+// set canvas heigth/width
 const responsive = () => {
     canvas.height = window.innerHeight - 50;
     canvas.width = window.innerWidth - 50;
 }
-
+// canvas delete button
 const clearCanvas = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
