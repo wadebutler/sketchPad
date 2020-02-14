@@ -48,7 +48,7 @@ const draw = (event) => {
     context.moveTo(event.touches[0].clientX, event.touches[0].clientY);
 }
 
-// set canvas heigth/width
+// canvas heigth/width
 const responsive = () => {
     canvas.height = window.innerHeight - 50;
     canvas.width = window.innerWidth - 50;
@@ -57,3 +57,21 @@ const responsive = () => {
 const clearCanvas = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+//prevent scrolling/page refresh when drawing
+window.addEventListener("touchstart", (event) => {
+    if (event.target === canvas) {
+        event.preventDefault();
+    }
+}, { passive: false });
+window.addEventListener("touchend", (event) => {
+    if (event.target === canvas) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+window.addEventListener("touchmove", (event) => {
+    if (event.target === canvas) {
+        event.preventDefault();
+    }
+}, { passive: false });
