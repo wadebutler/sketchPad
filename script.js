@@ -3,8 +3,9 @@ const context = canvas.getContext("2d");
 let painting = false; 
 const clear = document.querySelector(".clear");
 
+// run on load
 window.addEventListener("load", () => {
-    responsive();
+    setCanvasDimensions();
     canvas.addEventListener("mousedown", startPosition);
     canvas.addEventListener("mouseup", finishedPosition);
     canvas.addEventListener("mousemove", draw);
@@ -14,12 +15,8 @@ window.addEventListener("load", () => {
     clear.addEventListener("click", clearCanvas);
 });
 
-window.addEventListener("change", () => {
-    context.strokeStyle = document.querySelector(".color").value;
-})
-
 window.addEventListener("resize", () => {
-    responsive();
+    setCanvasDimensions();
 })
 
 const startPosition = () => {
@@ -32,26 +29,40 @@ const finishedPosition = () => {
     context.beginPath();
 }
 
-const draw = (event) => {
-    if(!painting) return;
-    context.lineWidth = document.querySelector(".size").value;
-    context.lineCap = "round";
-
+const drawOnDesktop = (event) => {
     context.lineTo(event.clientX, event.clientY);
     context.stroke();
     context.beginPath();
     context.moveTo(event.clientX, event.clientY);
+}
 
+const drawOnMobile = (event) => {
     context.lineTo(event.touches[0].clientX, event.touches[0].clientY);
     context.stroke();
     context.beginPath();
     context.moveTo(event.touches[0].clientX, event.touches[0].clientY);
 }
 
+const draw = (event) => {
+    if(!painting) return;
+    context.lineWidth = document.querySelector(".size").value;
+    context.strokeStyle = document.querySelector(".color").value;
+    context.lineCap = "round";
+
+    if(event.touches) {
+        drawOnMobile(event);
+        console.log('mobile')
+    } else {
+        drawOnDesktop(event);
+        console.log('desktop')
+    }
+
+}
+
 // canvas heigth/width
-const responsive = () => {
-    canvas.height = window.innerHeight - 50;
-    canvas.width = window.innerWidth - 50;
+const setCanvasDimensions = () => {
+    canvas.height = window.innerHeight - 185;
+    canvas.width = window.innerWidth - 20;
 }
 // canvas delete button
 const clearCanvas = () => {
