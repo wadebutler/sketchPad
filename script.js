@@ -2,7 +2,7 @@ const canvas = document.querySelector("#sketchpad");
 const context = canvas.getContext("2d");
 let painting = false; 
 const clear = document.querySelector(".clear");
-let x = window.matchMedia("(max-width: 900px)")
+const screenWidth = window.matchMedia("(max-width: 900px)");
 
 // let erasing = false;
 
@@ -27,7 +27,8 @@ const setCanvasDimensions = () => {
     canvas.height = window.innerHeight - 185;
     canvas.width = window.innerWidth - 400;
 
-    if (x.matches) { // If media query matches
+    if (screenWidth.matches) {
+        canvas.height = window.innerHeight - 210;
         canvas.width = window.innerWidth - 40;
     }
 }

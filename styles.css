@@ -81,7 +81,7 @@ body {
         width: 80%;
         margin: 0 auto;
         padding: 5px;
-        margin: 5px 0;
+        margin: 1px auto;
         border: 1px solid white;
     }
 
@@ -94,5 +94,9 @@ body {
         padding: 1px;
         margin: 2px;
         font-size: 10px;
+    }
+
+    #sketchpad {
+        margin: 0;
     }
 }
