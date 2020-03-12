@@ -73,3 +73,15 @@ body {
 .colorDesign, .sizeDesign {
     margin: 7px 0;
 }
+
+@media (max-width: 900px) {
+
+    .sketchpad {
+        flex-direction: column;
+    }
+
+    .controls {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
