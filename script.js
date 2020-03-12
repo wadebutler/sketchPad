@@ -3,6 +3,8 @@ const context = canvas.getContext("2d");
 let painting = false; 
 const clear = document.querySelector(".clear");
 
+// let erasing = false;
+
 // run on load
 window.addEventListener("load", () => {
     setCanvasDimensions();
@@ -19,6 +21,7 @@ window.addEventListener("resize", () => {
     setCanvasDimensions();
 })
 
+// drawing code
 const startPosition = () => {
     painting = true;
     draw(event);
@@ -51,18 +54,25 @@ const draw = (event) => {
 
     if(event.touches) {
         drawOnMobile(event);
-        console.log('mobile')
     } else {
         drawOnDesktop(event);
-        console.log('desktop')
     }
+}
 
+// turn on eraser tool
+const eraser = () => {
+    context.globalCompositeOperation = 'destination-out';
+}
+
+// turn on pen tool
+const pen = () => {
+    context.globalCompositeOperation = "source-over";
 }
 
 // canvas heigth/width
 const setCanvasDimensions = () => {
     canvas.height = window.innerHeight - 185;
-    canvas.width = window.innerWidth - 20;
+    canvas.width = window.innerWidth - 400;
 }
 // canvas delete button
 const clearCanvas = () => {

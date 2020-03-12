@@ -10,22 +10,27 @@
     <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
+    <div class="sketchpad">
+        <canvas id="sketchpad"></canvas>
+        <div class="controls">
+            <button class="clear button">Clear Canvas</button>
+            <div>
+                <label class="colorDesign" for="color">Color:</label>
+                <input id="color" class="color" type="color">
+            </div>
+            <div>
+                <label class="sizeDesign" for="size">Stroke Size:</label>
+                <input id="size" class="size" type="range" value="10">
+            </div>
+            <button class="button" onclick="pen()">Pen</button>
+            <button class="button" onclick="eraser()">Eraser</button>
+        </div>
+    </div>
+
     <header>
         <h1>Sketch-It</h1>
         <p>Click and Draw</p>
     </header>
-    <div class="controls">
-        <button class="clear">Clear Canvas</button>
-        <div>
-            <label class="colorDesign" for="color">Color:</label>
-            <input id="color" class="color" type="color">
-        </div>
-        <div>
-            <label class="sizeDesign" for="size">Stroke Size:</label>
-            <input id="size" class="size" type="range" value="10">
-        </div>
-    </div>
-    <canvas id="sketchpad"></canvas>
 
     <script src="script.js"></script>
 </body>
