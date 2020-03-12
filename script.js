@@ -2,6 +2,7 @@ const canvas = document.querySelector("#sketchpad");
 const context = canvas.getContext("2d");
 let painting = false; 
 const clear = document.querySelector(".clear");
+let x = window.matchMedia("(max-width: 900px)")
 
 // let erasing = false;
 
@@ -20,6 +21,16 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
     setCanvasDimensions();
 })
+
+// canvas heigth and width
+const setCanvasDimensions = () => {
+    canvas.height = window.innerHeight - 185;
+    canvas.width = window.innerWidth - 400;
+
+    if (x.matches) { // If media query matches
+        canvas.width = window.innerWidth - 40;
+    }
+}
 
 // drawing code
 const startPosition = () => {
@@ -69,11 +80,6 @@ const pen = () => {
     context.globalCompositeOperation = "source-over";
 }
 
-// canvas heigth/width
-const setCanvasDimensions = () => {
-    canvas.height = window.innerHeight - 185;
-    canvas.width = window.innerWidth - 400;
-}
 // canvas delete button
 const clearCanvas = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);

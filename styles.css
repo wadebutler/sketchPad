@@ -77,11 +77,15 @@ body {
 @media (max-width: 900px) {
 
     .sketchpad {
-        flex-direction: column;
+        display: block;
     }
 
     .controls {
         width: 80%;
         margin: 0 auto;
+    }
+
+    header {
+        display: none;
     }
 }
